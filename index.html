@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Librero Digital</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5dc; /* beige */
+  color: #333; /* gris oscuro para el texto */
+  padding: 1rem;
+}
+
+h1, h2 {
+  background-color: #fffaf0; /* marfil */
+  color: #333;
+  padding: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.buscador {
+  margin-bottom: 1rem;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 500px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.seccion {
+  margin-top: 2rem;
+}
+
+.item {
+  margin-bottom: 1rem;
+  background-color: #fffaf0; /* marfil */
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+iframe, video {
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  border: none;
+  border-radius: 10px;
+  margin: auto;
+  display: block;
+}
+
+
+    
+    
+
+    .encabezado-imagen {
+      width: 100%;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .encabezado-imagen img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+ /* 🔁 Animación de parpadeo */
+    .parpadeo {
+      animation: parpadeo 1.5s infinite;
+    }
+
+    @keyframes parpadeo {
+      0% { box-shadow: 0 0 5px 0 rgba(76, 175, 80, 0.2); }
+      50% { box-shadow: 0 0 10px 4px rgba(76, 175, 80, 0.5); }
+      100% { box-shadow: 0 0 5px 0 rgba(76, 175, 80, 0.2); }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="encabezado-imagen">
+    <img src="imagenes/fondo.png" alt="Imagen de encabezado" />
+  </div>
+
+
+  <div class="buscador">
+    <input type="text" id="buscador" placeholder="Buscar por título..." onkeyup="filtrar()">
+  </div>
+
+
+  <div class="seccion">
+    <h2>La administración pública en la educación.</h2>
+    <div class="item" data-titulo="1. Introducción a la administración pública mexicana">
+      <p><strong>1. Introducción a la administración pública mexicana</strong></p>
+      <iframe src="pdfs/1. Introducción a la administración pública mexicana.pdf"></iframe>
+    </div>
+    <!-- Agrega más documentos aquí --> 
+<div class="item" data-titulo="2. La estructura del sistema educativo mexicano">
+      <p><strong>2. La estructura del sistema educativo mexicano</strong></p>
+      <iframe src="pdfs/2. La estructura del sistema educativo mexicano.pdf"></iframe>
+    </div> <div class="item" data-titulo="3. Ley de Planeación">
+      <p><strong>3. Ley de Planeación</strong></p>
+      <iframe src="pdfs/3. Ley de Planeación.pdf"></iframe>
+    </div>
+
+    </div> <div class="item" data-titulo="4. El proceso administrativo público como fundamento constitucional">
+      <p><strong>4. El proceso administrativo público como fundamento constitucional</strong></p>
+      <iframe src="pdfs/4. El proceso administrativo público como fundamento constitucional.pdf"></iframe>
+    </div>
+</div> <div class="item" data-titulo="5. Gestión educativa estratégica y gestión escolar del proceso de enseñanza aprendizaje. Un aproximación conceptual">
+      <p><strong>5. Gestión educativa estratégica y gestión escolar del proceso de enseñanza aprendizaje. Un aproximación conceptual</strong></p>
+      <iframe src="pdfs/5. Gestión educativa estratégica y gestión escolar del proceso de enseñanza aprendizaje. Un aproximación conceptual.pdf"></iframe>
+    </div>
+</div> <div class="item" data-titulo="6. Planeación estratégica. Fundamentos y aplicaciones. Una aproximación conceptual">
+      <p><strong>6. Planeación estratégica. Fundamentos y aplicaciones. Una aproximación concepual</strong></p>
+      <iframe src="pdfs/6. Planeación estratégica. Fundamentos y aplicaciones.pdf"></iframe>
+    </div>
+</div> <div class="item" data-titulo="7. Programa Nacional de Combate a la Corrupción y a la Impunidad, y de Mejora de la Gestión Pública 2019-2024">
+      <p><strong>7. Programa Nacional de Combate a la Corrupción y a la Impunidad, y de Mejora de la Gestión Pública 2019-2024</strong></p>
+      <iframe src="pdfs/7. Programa Nacional de Combate a la Corrupción y a la Impunidad, y de Mejora de la Gestión Pública 2019-2024.pdf"></iframe>
+    </div>
+</div> <div class="item" data-titulo="8. Ley Federal de Responsabilidades Administrativas de los Servidores Públicos">
+      <p><strong>8. Ley Federal de Responsabilidades Administrativas de los Servidores Públicos</strong></p>
+      <iframe src="pdfs/8. Ley Federal de Responsabilidades Administrativas de los Servidores Públicos.pdf"></iframe>
+    </div>
+</div> <div class="item" data-titulo="9. La administración pública descentralizada">
+      <p><strong>9. La administración pública descentralizada</strong></p>
+      <iframe src="pdfs/9. La administración pública descentralizada.pdf"></iframe>
+    </div>
+</div> <div class="item" data-titulo="10. La Modernización de la Administración Pública en México">
+      <p><strong>10. La Modernización de la Administración Pública en México</strong></p>
+      <iframe src="pdfs/10. La Modernización de la Administración Pública en México.pdf"></iframe>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>Documentos normativos de la función docente.</h2>
+    <div class="item" data-titulo="1. Ley Reglamentaria del Artículo 3o. de la Constitución Política de los Estados Unidos Mexicanos, en materia de Mejora Continua">
+      <p><strong>1. Ley Reglamentaria del Artículo 3o. de la Constitución Política de los Estados Unidos Mexicanos, en materia de Mejora Continua</strong></p>
+      <iframe src="pdfs/1. Ley Reglamentaria del Artículo 3o. de la Constitución Política de los Estados Unidos Mexicanos, en materia de Mejora Continua.pdf"></iframe>
+    </div>
+    <!-- Agrega más documentos aquí -->
+ <div class="item" data-titulo="2. Ley General de los Derechos de Niñas, Niños y Adolescentes">
+      <p><strong>2. Ley General de los Derechos de Niñas, Niños y Adolescentes</strong></p>
+      <iframe src="pdfs/2. Ley General de los Derechos de Niñas, Niños y Adolescentes.pdf"></iframe>
+    </div>
+<div class="item" data-titulo="3. Ley General de Educación">
+      <p><strong>3. Ley General de Educación</strong></p>
+      <iframe src="pdfs/3. Ley General de Educación.pdf"></iframe>
+    </div>
+<div class="item" data-titulo="4. Reglamento interior de la Secretaría de Educación Pública">
+      <p><strong>4. Reglamento interior de la Secretaría de Educación Pública</strong></p>
+      <iframe src="pdfs/4. Reglamento interior de la Secretaría de Educación Pública.pdf"></iframe>
+    </div>
+<div class="item" data-titulo="5. Ley General del Sistema para la Carrera de las Maestras y los Maestros">
+      <p><strong>5. Ley General del Sistema para la Carrera de las Maestras y los Maestros</strong></p>
+      <iframe src="pdfs/5. Ley General del Sistema para la Carrera de las Maestras y los Maestros.pdf"></iframe>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <h2>Material audiovisual.</h2>
+    <div class="item" data-titulo="1. Qué es la administración pública. Explicación en 5 minutos">
+      <p><strong>1. Qué es la administración pública. Explicación en 5 minutos</strong></p>
+      <video controls>
+        <source src="videos/1. Qué es la administración pública. Explicación en 5 minutos.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+    <!-- Agrega más videos aquí -->
+  <div class="item" data-titulo="2. Ley Orgánica de la Administración Pública Federal">
+      <p><strong>2. Ley Orgánica de la Administración Pública Federal</strong></p>
+      <video controls>
+        <source src="videos/2. Ley Orgánica de la Administración Pública Federal.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+<div class="item" data-titulo="3. Las Políticas Educativas para México en el contexto social del siglo XXI">
+      <p><strong>3. Las Políticas Educativas para México en el contexto social del siglo XXI</strong></p>
+      <video controls>
+        <source src="videos/3. Las Políticas Educativas para México en el contexto social del siglo XXI.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+<div class="item" data-titulo="4. Proceso de Planificación Estratégica. Planeamiento Estratégico">
+      <p><strong>4. Proceso de Planificación Estratégica. Planeamiento Estratégico</strong></p>
+      <video controls>
+        <source src="videos/4. Proceso de Planificación Estratégica. Planeamiento Estratégico.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+<div class="item" data-titulo="5. Panorama del sistema educativo mexicano desde la perspectiva de las políticas públicas">
+      <p><strong>5. Panorama del sistema educativo mexicano desde la perspectiva de las políticas públicas</strong></p>
+      <video controls>
+        <source src="videos/5. Panorama del sistema educativo mexicano desde la perspectiva de las políticas públicas.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function filtrar() {
+      const input = document.getElementById("buscador").value.toLowerCase();
+      const items = document.querySelectorAll(".item");
+      items.forEach(item => {
+        const titulo = item.getAttribute("data-titulo").toLowerCase();
+        item.style.display = titulo.includes(input) ? "block" : "none";
+      });
+    }
+ // 👁️ Efecto parpadeo al cargar la página
+    window.addEventListener('load', () => {
+      const input = document.getElementById('buscador');
+      input.classList.add('parpadeo');
+      setTimeout(() => {
+        input.classList.remove('parpadeo');
+      }, 4000); // dura 4 segundos
+    });
+  </script>
+</body>
+</html>
+  
