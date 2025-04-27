@@ -84,6 +84,8 @@ iframe, video {
       height: auto;
       border-radius: 10px;
     }
+
+
  /* 🔁 Animación de parpadeo */
     .parpadeo {
       animation: parpadeo 1.5s infinite;
@@ -98,12 +100,50 @@ iframe, video {
   </style>
 </head>
 
+
+<script>
+  function ajustarCoordenadas() {
+    const img = document.getElementById('imagen-mapa');
+    const mapa = document.getElementById('imgmap20254270511');
+    const areas = mapa.getElementsByTagName('area');
+
+    const anchoOriginal = 2500; // cambia este número al ancho ORIGINAL de tu imagen fondo.png
+    const factorEscala = img.clientWidth / anchoOriginal;
+
+    for (let i = 0; i < areas.length; i++) {
+      const coordsOriginales = areas[i].getAttribute('data-original-coords').split(',').map(Number);
+      const coordsNuevas = coordsOriginales.map(c => Math.round(c * factorEscala));
+      areas[i].coords = coordsNuevas.join(',');
+    }
+  }
+
+  window.addEventListener('load', () => {
+    const areas = document.querySelectorAll('area');
+    areas.forEach(area => {
+      if (!area.hasAttribute('data-original-coords')) {
+        area.setAttribute('data-original-coords', area.coords);
+      }
+    });
+    ajustarCoordenadas();
+  });
+
+  window.addEventListener('resize', ajustarCoordenadas);
+</script>
+
+
 <body>
 
   <div class="encabezado-imagen">
-    <img src="imagenes/fondo.png" alt="Imagen de encabezado" />
+    <img src="imagenes/fondo.png" alt="Imagen de encabezado" usemap="#imgmap20254270511" id="imagen-mapa">
   </div>
 
+  <!-- Asegúrate que las coordenadas coincidan con el tamaño real de tu imagen -->
+  <map id="imgmap20254270511" name="imgmap20254270511">
+    <area shape="rect" alt="Administración" title="Administración" coords="188,856,700,1532" href="#administracion">
+    <area shape="rect" alt="Normativo" title="Normativo" coords="720,560,1036,1264" href="#normativo">
+    <area shape="rect" alt="Normativo 2" title="Normativo 2" coords="400,584,728,776" href="#normativo">
+    <area shape="rect" alt="Audiovisual" title="Audiovisual" coords="1932,940,2252,1420" href="#audiovisual">
+  </map>
 
   <div class="buscador">
     <input type="text" id="buscador" placeholder="Buscar por título..." onkeyup="filtrar()">
@@ -111,7 +151,7 @@ iframe, video {
 
   <div id="mensaje-no-resultados" style="display: none;"></div>
 
-  <div class="seccion">
+  <div class="seccion" id="administracion">
     <h2>La administración pública en la educación.</h2>
     <div class="item" data-titulo="1. Introducción a la administración pública mexicana">
       <p><strong>1. Introducción a la administración pública mexicana</strong></p>
@@ -156,7 +196,7 @@ iframe, video {
     </div>
   </div>
 
-  <div class="seccion">
+  <div class="seccion" id="normativo">
     <h2>Documentos normativos de la función docente.</h2>
     <div class="item" data-titulo="1. Ley Reglamentaria del Artículo 3o. de la Constitución Política de los Estados Unidos Mexicanos, en materia de Mejora Continua">
       <p><strong>1. Ley Reglamentaria del Artículo 3o. de la Constitución Política de los Estados Unidos Mexicanos, en materia de Mejora Continua</strong></p>
@@ -181,7 +221,7 @@ iframe, video {
     </div>
   </div>
 
-  <div class="seccion">
+  <div class="seccion" id="audiovisual">
     <h2>Material audiovisual.</h2>
     <div class="item" data-titulo="1. Qué es la administración pública. Explicación en 5 minutos">
       <p><strong>1. Qué es la administración pública. Explicación en 5 minutos</strong></p>
