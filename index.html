@@ -22,16 +22,29 @@ h1, h2 {
 }
 
 .buscador {
-  margin-bottom: 1rem;
+ /* margin-bottom: 1rem; */
+ text-align: center;
+
 }
 
 input[type="text"] {
   padding: 0.5rem;
   width: 100%;
-  max-width: 500px;
+  max-width: 50%; /* 500px;  */
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+#mensaje-no-resultados {
+  background-color: #fffaf0;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: bold;
+  color: #d32f2f; /* Rojo para destacar */
 }
 
 .seccion {
@@ -96,6 +109,7 @@ iframe, video {
     <input type="text" id="buscador" placeholder="Buscar por título..." onkeyup="filtrar()">
   </div>
 
+  <div id="mensaje-no-resultados" style="display: none;"></div>
 
   <div class="seccion">
     <h2>La administración pública en la educación.</h2>
@@ -208,14 +222,66 @@ iframe, video {
   </div>
 
   <script>
+    
     function filtrar() {
       const input = document.getElementById("buscador").value.toLowerCase();
       const items = document.querySelectorAll(".item");
+      const secciones = document.querySelectorAll(".seccion");
+      
+      let algunaCoincidencia = false;
+      
+      // Ocultar todos los items inicialmente
+      items.forEach(item => {
+        item.style.display = "none";
+      });
+      
+      // Mostrar solo los items que coincidan
       items.forEach(item => {
         const titulo = item.getAttribute("data-titulo").toLowerCase();
-        item.style.display = titulo.includes(input) ? "block" : "none";
+        if (titulo.includes(input)) {
+          item.style.display = "block";
+          algunaCoincidencia = true;
+        }
       });
+      
+      // Mostrar/ocultar secciones según si tienen items visibles
+      secciones.forEach(seccion => {
+        const itemsVisibles = seccion.querySelectorAll(".item[style='display: block;']").length;
+        seccion.style.display = itemsVisibles > 0 ? "block" : "none";
+      });
+      
+      // Si no hay texto de búsqueda, mostrar todo
+      if (input === "") {
+        items.forEach(item => {
+          item.style.display = "block";
+        });
+        secciones.forEach(seccion => {
+          seccion.style.display = "block";
+        });
+      }
+      
+      // Si hay texto pero no coincidencias, mostrar mensaje
+      if (input !== "" && !algunaCoincidencia) {
+        const mensajeNoResultados = document.getElementById("mensaje-no-resultados");
+        if (!mensajeNoResultados) {
+          const nuevoMensaje = document.createElement("div");
+          nuevoMensaje.id = "mensaje-no-resultados";
+          nuevoMensaje.textContent = "No se encontraron resultados para: " + input;
+          nuevoMensaje.style.padding = "1rem";
+          nuevoMensaje.style.textAlign = "center";
+          document.body.appendChild(nuevoMensaje);
+        } else {
+          mensajeNoResultados.textContent = "No se encontraron resultados para: " + input;
+          mensajeNoResultados.style.display = "block";
+        }
+      } else {
+        const mensajeNoResultados = document.getElementById("mensaje-no-resultados");
+        if (mensajeNoResultados) {
+          mensajeNoResultados.style.display = "none";
+        }
+      }
     }
+
  // 👁️ Efecto parpadeo al cargar la página
     window.addEventListener('load', () => {
       const input = document.getElementById('buscador');
